@@ -1,9 +1,9 @@
 spring:
   datasource:
-    url: jdbc:mariadb://a372be0564d58424b9f503dd696e766a-1897922469.ap-northeast-2.elb.amazonaws.com:3306/CLOUD?allowMultiQueries=true
+    url: ${DB_URL}
     driver-class-name: org.mariadb.jdbc.Driver
-    username: cloud
-    password: Skala25a!23$
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
 
   jpa:
     open-in-view: true
