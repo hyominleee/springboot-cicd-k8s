@@ -4,15 +4,15 @@ pipeline {
   environment {
     // === 사용자 수정 영역 ===
     GIT_URL                = '<YOUR_GIT_REPO_URL>'
-    GIT_BRANCH             = 'main'            // 또는 main
-    GIT_ID                 = 'skala-github-id'   // GitHub PAT credential ID
+    GIT_BRANCH             = 'main'
+    GIT_ID                 = '<YOUR_GIT_CREDENTIAL_ID>'
     IMAGE_NAME             = '<YOUR_IMAGE_NAME>'
     // =======================
     IMAGE_TAG              = '1.0.0'
     IMAGE_REGISTRY_URL     = '<YOUR_REGISTRY_URL>'
     IMAGE_REGISTRY_PROJECT = '<YOUR_REGISTRY_PROJECT>'
 
-    DOCKER_CREDENTIAL_ID   = 'skala-image-registry-id'  // Harbor 인증 정보 ID
+    DOCKER_CREDENTIAL_ID   = '<YOUR_DOCKER_CREDENTIAL_ID>'
     K8S_NAMESPACE          = '<YOUR_K8S_NAMESPACE>'
   }
 

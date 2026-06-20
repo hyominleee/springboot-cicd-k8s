@@ -13,7 +13,7 @@ spec:
       paths:
       - backend:
           service:
-            name: <YOUR_USERNAME>-myfirst-api-server
+            name: <YOUR_USERNAME>-<YOUR_SERVICE_NAME>
             port:
               number: 8080
         path: /
@@ -21,4 +21,4 @@ spec:
   tls:
   - hosts:
     - '<YOUR_INGRESS_HOST>'
-    secretName: <YOUR_USERNAME>-ingress-project-tls-cert
+    secretName: <YOUR_USERNAME>-ingress-tls-cert

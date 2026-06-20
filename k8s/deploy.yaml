@@ -1,27 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: <YOUR_USERNAME>-myfirst-api-server
+  name: <YOUR_USERNAME>-<YOUR_SERVICE_NAME>
   namespace: <YOUR_NAMESPACE>
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: <YOUR_USERNAME>-myfirst-api-server
+      app: <YOUR_USERNAME>-<YOUR_SERVICE_NAME>
   template:
     metadata:
       annotations:
         prometheus.io/scrape: 'true'
-        prometheus.io/port: '8080'
+        prometheus.io/port: '8081'
         prometheus.io/path: '/actuator/prometheus'
-        update: 7bd2c41b
       labels:
-        app: <YOUR_USERNAME>-myfirst-api-server
+        app: <YOUR_USERNAME>-<YOUR_SERVICE_NAME>
     spec:
       serviceAccountName: default
       containers:
-      - name: myfirst-api-server
-        image: <YOUR_REGISTRY>/<YOUR_PROJECT>/<YOUR_IMAGE_NAME>:<VERSION>
+      - name: <YOUR_SERVICE_NAME>
+        image: <YOUR_REGISTRY>/<YOUR_PROJECT>/<YOUR_IMAGE_NAME>:1.0.0
         imagePullPolicy: Always
         env:
         - name: USER_NAME
@@ -30,3 +29,17 @@ spec:
           value: <YOUR_NAMESPACE>
         - name: SPRING_PROFILES_ACTIVE
           value: "prod"
+        livenessProbe:
+          httpGet:
+            path: /actuator/health/liveness
+            port: 8081
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /actuator/health/readiness
+            port: 8081
+          initialDelaySeconds: 15
+          periodSeconds: 5
+          failureThreshold: 3

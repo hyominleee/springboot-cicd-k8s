@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: <YOUR_USERNAME>-myfirst-api-server
+  name: <YOUR_USERNAME>-<YOUR_SERVICE_NAME>
 spec:
   selector:
-    app: <YOUR_USERNAME>-myfirst-api-server
+    app: <YOUR_USERNAME>-<YOUR_SERVICE_NAME>
   ports:
     - name: http
       protocol: TCP
