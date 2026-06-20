@@ -1,4 +1,4 @@
-# myfirst-api-server
+# springboot-cicd-k8s
 
 Spring Boot 기반의 REST API 샘플 서버입니다. User / Region CRUD, Swagger UI, Actuator 기반 헬스체크 및 Prometheus 메트릭 수집을 포함하며, Jenkins + Docker + Kubernetes CI/CD 파이프라인으로 배포됩니다.
 
@@ -29,13 +29,13 @@ src/main/java/com/skala/springbootsample/
 ├── domain/
 │   ├── User.java                    # 사용자 엔티티
 │   └── Region.java                  # 지역 엔티티
-├── repo/
+├── repo/        
 │   ├── UserRepository.java
 │   └── RegionRepository.java
 ├── service/
-│   ├── UserService.java
-│   ├── RegionService.java
-│   └── LifecycleBean.java
+│   ├── UserService.java             # 사용자 CRUD
+│   ├── RegionService.java           # 지역 CRUD
+│   └── LifecycleBean.java           # 애플리케이션 시작/종료 이벤트 처리
 ├── controller/
 │   ├── UserController.java          # /api/users
 │   ├── RegionController.java        # /api/regions
