@@ -124,10 +124,10 @@ Region (1) ──── (N) User
 ./mvnw clean package -DskipTests
 
 # Docker 이미지 빌드
-docker build -t myfirst-api-server .
+docker build -t <YOUR_IMAGE_NAME> .
 
 # 컨테이너 실행
-docker run -p 8080:8080 myfirst-api-server
+docker run -p 8080:8080 <YOUR_IMAGE_NAME>
 ```
 
 ---
@@ -161,7 +161,7 @@ Kubernetes Deployment에 Prometheus 스크레이핑 어노테이션이 설정되
 ```yaml
 annotations:
   prometheus.io/scrape: 'true'
-  prometheus.io/port: '8080'
+  prometheus.io/port: '8081'
   prometheus.io/path: '/actuator/prometheus'
 ```
 
@@ -169,7 +169,7 @@ annotations:
 
 ## CI/CD 파이프라인
 
-Jenkins를 통해 자동 빌드 및 배포가 이루어집니다.
+Jenkins를 통해 자동 빌드 및 배포가 이루어집니다. CI/CD 파이프라인 설정은 👉 [devops-pipeline](https://github.com/hyominleee/devops-pipeline) 레포를 참고하세요.
 
 ```
 1. Git Clone  (main 브랜치)
@@ -183,6 +183,6 @@ Jenkins를 통해 자동 빌드 및 배포가 이루어집니다.
 ### Kubernetes 리소스
 
 - **Namespace**: 환경변수 `K8S_NAMESPACE` 참고
-- **Deployment**: `<YOUR_USERNAME>-myfirst-api-server`
+- **Deployment**: `<YOUR_USERNAME>-<YOUR_SERVICE_NAME>`
 - **Service**: ClusterIP, 포트 8080 (HTTP), 8081 (Management)
 - **Ingress**: TLS 적용 (cert-manager, nginx ingress)
