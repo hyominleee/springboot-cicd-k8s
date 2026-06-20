@@ -1,4 +1,4 @@
-# springboot-cicd-k8s
+# springboot-restapi
 
 Spring Boot 기반의 REST API 샘플 서버입니다. User / Region CRUD, Swagger UI, Actuator 기반 헬스체크 및 Prometheus 메트릭 수집을 포함하며, Jenkins + Docker + Kubernetes CI/CD 파이프라인으로 배포됩니다.
 
